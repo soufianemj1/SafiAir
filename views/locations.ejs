@@ -1,0 +1,7 @@
+<%- include ('./partials/head.ejs') %>
+<!-- navbar -->
+<%- include('./partials/navbar.ejs') %>
+<!-- the body -->
+<% specificflight.forEach(function(spflight){  %>
+    <h1><%= spflight.departure %></h1>
+    <% }); %>

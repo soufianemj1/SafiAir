@@ -1,0 +1,49 @@
+<%- include ('./partials/head.ejs') %>
+<!-- navbar -->
+<%- include('./partials/navbar.ejs') %>
+<body>
+    
+
+    <form method="POST" action="/specific">
+<div class="total-form">
+    <div class="form-photo"><img src="https://images.unsplash.com/photo-1549897411-b06572cdf806?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt=""></div>
+    
+    <div class="the-form">
+        
+        <h3>Reserve your seat now!</h3>
+        <div>
+            <select name="from"  id="from"  value="" class="form-select" aria-label="Default select example">
+                <option selected>From...</option>
+                <% rows.forEach(function(flight){  %>
+                <option value="<%= flight.departure %>" name="departure"><%= flight.departure %></option>
+                <% }); %>
+              </select>
+        </div>
+        <div>
+            <select name="where" value="" class="form-select" aria-label="Default select example">
+                <option selected>Where to ...</option>
+                <% rows.forEach(function(flight){  %>
+                <option value="<%= flight.destination%>" name="destination"><%= flight.destination%></option>
+                <% }); %>
+              </select>
+        </div>
+        <div>
+            <select name="flightdate" class="form-select" aria-label="Default select example">
+                <option value="date" selected>date</option>
+                <% rows.forEach(function(flight){  %>
+                <option value="<%= flight.dep_date %>" name="date"><%= flight.dep_date %></option>
+                <% }); %>
+              </select>
+        </div>
+        <div>
+            <button class="button">Check</button>
+        </div>
+    
+    </div>
+</div>
+</form>
+
+
+
+<%- include('./partials/footer.ejs') %>
+</body>
