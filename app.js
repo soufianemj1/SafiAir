@@ -1,7 +1,4 @@
-// const express = require('express');
-// const app = express();
-// app.use(express.static('public'));
-// const bodybarpser = require('body-parser');
+
 const mysql= require('mysql2');
 const express = require('express');
 const bodyparser = require('body-parser');
@@ -11,10 +8,7 @@ app.use(bodyparser.json());
 urlencodedparser =bodyparser.urlencoded({extended:false});
 
 
-
-
 app.listen(3000); // server
-
 
 
 app.set('view engine','ejs');  //setting ejs
@@ -24,7 +18,7 @@ app.set('view engine','ejs');  //setting ejs
 const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'salma123mj',
+  password : '123456',
   database : 'safiair'
 });
 
@@ -37,10 +31,6 @@ db.connect((err)=>{
 });
 
 
-
-
-
- 
 
 app.get('/',(req,res)=>{
     res.render('index')
@@ -74,20 +64,26 @@ app.get('/flights' , (req, res) => {
         db.query(`SELECT * FROM flight WHERE departure = '${from}' AND destination ='${where}' and dep_date = '${flight_date}' `, (err, specificflight, fields) => {
             if (!err){
                 res.render('locations',{specificflight});
-                console.log(specificflight);
-                
-            }
-            
+                console.log(specificflight);  
+            } 
             else
             console.log(err);
-            ;
-            })
-        
-
+            });
     })
 
-
-
+    app.post('/booking',urlencodedparser,(req,res)=>{
+        let booking_id = req.body.flight_id;
+        let extra = req.body.extra;
+        let name = req.body.fullname;
+        let mail = req.body.email
+        db.query(`INSERT INTO reservation (vol_id,Extra,full_name,mail) VALUES ('${booking_id}', '${extra}','${name}','${mail}')`,(err,result)=>{
+            if(!err){
+                res.render('index');
+            }else{
+                console.log(err);
+            }
+        });   
+    });
 
 
 

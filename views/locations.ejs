@@ -3,5 +3,68 @@
 <%- include('./partials/navbar.ejs') %>
 <!-- the body -->
 <% specificflight.forEach(function(spflight){  %>
-    <h1><%= spflight.departure %></h1>
-    <% }); %>
+<!-- <h1><%= spflight.departure %></h1> -->
+<form class="flight-form" action="/booking" method="POST">
+  <div class="flights-div">
+    <div>
+      <h1>Flight</h1>
+    </div>
+    <div><input name="flight_id" type="hidden" value="<%= spflight.id %>"></div>
+
+    <div class="input-group-text chkbox">
+      <div><label for="lunch">lunch</label></div>
+      <div><input id="lunch" value="lunch" name="extra" type="checkbox" aria-label="Checkbox for following text input">
+      </div>
+
+    </div>
+
+    <div><span>Departure: <br></span><%= spflight.departure %></div>
+    <div><span>Destination: <br></span><%= spflight.destination %></div>
+    <div><span>date: <br></span><%= spflight.dep_date%></div>
+    <div><span>Stopover: <br></span><%= spflight.stopover%></div>
+    <div><span>places: <br></span><%= spflight.places %></div>
+
+    <div><button id="ignoring" class="btn btn-warning">Set your infos</button></div>
+  </div>
+
+  <% }); %>
+  <div id="infos" class="info d-none">
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">Full name:</label>
+      </div>
+      <div class="col-auto">
+        <input name="fullname" type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">Email:</label>
+      </div>
+      <div class="col-auto">
+        <input name="email" type="mail" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+      </div>
+
+
+
+
+      <div><button class=" btn btn-warning">Book now!</button></div>
+
+</form>
+
+<script>
+  const btn = document.getElementById("ignoring")
+  const info = document.querySelector('.info');
+  document.getElementById("ignoring").addEventListener("click", e => {
+    event.preventDefault()
+  });
+
+
+  btn.addEventListener("click", e => {
+    if (info.classList.contains('block')) {
+      info.classList.remove('block')
+      info.classList.add('d-none')
+    } else {
+      info.classList.remove('d-none')
+      info.classList.add('block')
+    }
+  })
+</script>

@@ -102,6 +102,10 @@
 /* reservation */
 .total-form{
     display: flex;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 5px 2px 17px -10px #000000;
+
+        
 
 }
 .form-photo{
@@ -133,10 +137,38 @@
     padding:5px 30px;
     border-radius: 3px;
 }
-
-
-
-
+/* location */
+.flights-div{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    padding: 2vh 4vw;
+    gap: 5vh;
+    border: #C49D83 solid;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    width: fit-content;
+}
+.flight-form{
+    margin: 0 auto;
+    background-color:#ca640b;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    padding: 5vh 5vw;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    
+}
+.chkbox{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -202,5 +234,78 @@
             color: #aaa;
             margin-bottom: 0;
         }
+        @media only screen and (max-width: 600px) {
+            .total-form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 5vh;
+     
+            }
+            .form-photo img{
+
+                display: none;
+}
+.main-body{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 5vh;
+                gap: 4vh;
+     
+            }
+            .image img {
+            width: 80vw;
+            box-shadow: 5px 2px 17px -10px #000000;
+           
+        }
+        .flights-div{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    
+}
+.flight-form{
+    width: 80%;    
+}
+        
+}
+@media only screen and (max-width: 900px) {
+            .total-form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 5vh;
+     
+            }
+            .form-photo img{
+
+                display: none;
+}
+.main-body{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 5vh;
+                gap: 4vh;
+            }
+            .image img {
+            width: 80vw;
+            box-shadow: 5px 2px 17px -10px #000000;    
+        }
+        .flights-div{
+    display: flex;
+    flex-direction: column;
+    width: 80%; 
+}
+.flight-form{
+    width: 80%;    
+}
+        
+}
     </style>
 </head>
